@@ -1,0 +1,75 @@
+\documentclass[20pt]{article}
+\usepackage[utf8]{inputenc}
+
+\title{Control Systems Assignment-1}
+\author{ES18BTECH11011}
+\date{September 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Question 58}
+Control systems Engineering by Norman S. Nise. Chapter 2 question 58.\\
+Q: In a magnetic levitation experiment a metallic object is held up in the air suspended under an electromagnet. The vertical displacement of the object can be described by the following nonlinear differential equation:
+$$ m\frac{d^2H}{dt^2} = mg -k\frac{I^2}{H^2} $$
+here:\\ 
+m = mass of object, g = gravity acceleration constant\\
+k = positive constant\\
+H = distance between electromagnet and object (output signal)\\
+I = electromagnet current(input signal) \\
+
+\noindent \textbf{a.} Show that a system's equilibrium will be achieved when: $ H_o = I_o\sqrt{\frac{k}{mg}} $
+\textbf{Solution:}\\
+When the system is at equilibrium the second derivative of $H(x)$ is zero. That is: $\frac{d^2H}{dt^2} = 0 $ \\
+It implies that the given equation and substituting the value of $\frac{d^2H}{dt^2} = 0 $ in it will give:
+    $$ mg -k\frac{I^2}{H^2} = 0 $$
+    $$ mg = k\frac{I^2}{H^2} $$
+    $$ {H^2} = k\frac{I^2}{mg} $$
+    $$ H = I\sqrt{\frac{k}{mg}} $$
+    which intern gives $ H $ as $ H_o $ and $ I $ as $ I_o $ which are the equilibrium values of the system.So,
+    $$ H_o = I_o\sqrt{\frac{k}{mg}} $$
+\\
+\\
+\noindent \textbf{b.} Linearize the equation about the equilibrium point found in Part a and show that the resulting transfer function obtained from the linearized differential equation can be expressed as: 
+    $$ \frac{\delta H(s)}{\delta I(s)} = - \frac{a}{s^2-b^2} $$\\
+\textbf{Solution:}\\
+Performing the linearization by defining the following terms as $\delta H = H(t) - H_o$ and $\delta I = I(t) - I_o$. Substituting the above values will give in the original equation will give us:
+$$ m\frac{d^2(H_o + \delta H}{dt^2} = mg - k\frac{(I_o + \delta I)^2}{(H_o + \delta H)^2} $$
+let $ \gamma = mg - k\frac{(I_o + \delta I)^2}{(H_o + \delta H)^2}$\\
+
+\noindent Getting a first order taylor series approximation, which is calculate the below expression:
+$$ m \frac{d^{2} \delta H}{d t^{2}}=\left.\frac{\partial \gamma}{\partial \delta H}\right|_{\delta H=0, \delta l=0} \delta H+\left.\frac{\partial \gamma}{\partial \delta I}\right|_{\delta H=0, \delta I=0} \delta I $$
+
+\noindent substituting $\gamma$ in the above equation \\
+
+$$ m\frac{d^2 \delta H}{dt^2} = \left.\frac{\partial}{\partial \delta H}(mg - k\frac{(I_o + \delta I)^2}{(H_o + \delta H)^2})\right|_{\delta H=0, \delta l=0} \delta H+\left.\frac{\partial }{\partial \delta I}(mg - k\frac{(I_o + \delta I)^2}{(H_o + \delta H)^2})\right|_{\delta H=0, \delta I=0} \delta I  $$\\
+After taking partial derivative on right hand side of the equation respectively:\\
+
+$$ m \frac{d^2 \delta H}{d t^2}=\left.k \frac{2\left(I_{0}+\delta I\right)^2\left(H_{0}+\delta H\right)}{\left(H_{0}+\delta H\right)^4}\right|_{\delta H=0, \delta I=0} \delta H-\left.k \frac{2\left(I_{0}+\delta I\right)\left(H_{0}+\delta H\right)^2}{\left(H_{0}+\delta H\right)^4}\right|_{\delta H=0, \delta I=0} \delta I$$\\
+
+\noindent Partial derivative of 
+$$ \frac{\partial}{\partial \delta H}(mg) = 0$$ \\
+$$ \frac{\partial}{\partial \delta I}(mg) = 0$$ \\
+
+$$\frac{\partial}{\partial \delta H} (- k\frac{(I_o + \delta I)^2}{(H_o + \delta H)^2}) = k\frac{2\left(I_{0}+\delta I\right)^2\left(H_{0}+\delta H\right)}{\left(H_{0}+\delta H\right)^4}$$ \\
+
+$$\frac{\partial}{\partial \delta I} (- k\frac{(I_o + \delta I)^2}{(H_o + \delta H)^2})  = -k \frac{2\left(I_{0}+\delta I\right)\left(H_{0}+\delta H\right)^2}{\left(H_{0}+\delta H\right)^4}  $$ \\
+
+\noindent Similar to partial derivative of $ \frac{u}{v}$ which is $ \frac{vdu - udv}{v^2}$ \\
+
+\noindent After substituting $ \delta H = 0 $ and $ \delta I = 0 $ in the above differential we get:\\
+
+$$  \frac{d^{2} \delta H}{d t^{2}}=\frac{2 k I_{0}^{2}}{m H_{0}^{3}} \delta H-\frac{2 k I_{0}}{m H_{0}^{2}} \delta I  $$\\
+
+\noindent Laplace transform on the above equation transfer function can be obtained:\\
+
+$$ \delta H(s) s^2 = \frac{2kI_o}{mH_o^3} \delta H(s) - \frac{2kI_o}{mH_o^2}\delta I(s)$$ \\
+$$ \delta H(s)( s^2 -\frac{2kI_o}{mH_o^3}) = -\frac{2kI_o}{mH_o^2}\delta I(s) $$\\
+$$ \frac{\delta H(s)}{\delta I(s)} = -\frac{\frac{2kI_o}{mH_o^2}}{s^2 -\frac{2kI_o}{mH_o^3}} $$\\ 
+
+\noindent The given equation can be expressed in the form of  $ \frac{\delta H(s)}{\delta I(s)} = - \frac{a}{s^2-b^2} $ at\\ equibilrium point by lineariztion.\\ 
+Here $ a = \frac{2kI_o}{mH_o^2} $ and 
+$ b = \sqrt{\frac{2kI_o}{mH_o^3}}$
+
+\end{document}
